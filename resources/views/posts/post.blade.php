@@ -13,6 +13,7 @@
     @include('partials.header')
 
     <main class="max-w-4xl mx-auto py-8">
+
         <div class="bg-white rounded-lg shadow-lg p-4">
             <div class="flex gap-6">
                 <!-- Imagen del post -->
@@ -100,6 +101,10 @@
                     </div>
                 </section>
             </div>
+        </div>
+        <div class="mt-8 text-center">
+            <a href="{{ route('posts.showForm') }}" class="bg-blue-500 text-white p-2 rounded hover:bg-blue-600">Crear
+                Publicación</a>
         </div>
     </main>
 
