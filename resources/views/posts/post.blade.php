@@ -16,13 +16,14 @@
         <div class="bg-white rounded-lg shadow-lg p-4">
             <div class="flex gap-6">
                 <!-- Imagen del post -->
-                <div class="w-[50em]">
+                <div class="w-[60%] flex justify-center items-center">
                     <img src="{{ asset('storage/' . $post->image_path) }}" alt="Imagen del post"
-                        class="w-full h-full object-cover rounded-lg">
+                        class="w-full h-[35rem] object-cover rounded-lg">
                 </div>
 
+
                 <!-- Sección de detalles -->
-                <section class="flex flex-col w-[40em] p-6" classname="detalles">
+                <section class="flex flex-col w-[40%] p-6" classname="detalles">
                     <!-- Info del usuario -->
                     <div class="flex items-center mb-4 gap-2">
                         <img src="https://ui-avatars.com/api/?name={{ urlencode($post->user->name) }}&background=random"
@@ -40,11 +41,23 @@
                     @if ($post->comments->isEmpty())
                         <p class="text-gray-500 mt-2">No hay comentarios aún. Sé el primero en comentar.</p>
                     @else
-                        <ul class="mt-4 space-y-4">
+                        <ul class="mt-4 space-y-4 max-h-60 overflow-y-auto">
                             @foreach ($post->comments as $comment)
-                                <li class="bg-gray-50 p-4 rounded-lg shadow-sm">
-                                    <p class="text-gray-800">{{ $comment->comment }}</p>
-                                    <p class="text-sm text-gray-500 mt-1">- {{ $comment->user->name }}</p>
+                                <li class="bg-gray-50 p-4 rounded-lg shadow-sm break-words">
+
+                                    <div class="w-full">
+                                        <div class="flex items-center gap-2">
+                                            <img src="https://ui-avatars.com/api/?name={{ urlencode($comment->user->name) }}&background=random"
+                                                alt="Foto de {{ $post->user->name }}"
+                                                class="w-12 h-12 rounded-full object-cover border-4 border-gray-300">
+                                            <p class="text-sm text-gray-500 mt-1">- {{ $comment->user->name }}</p>
+                                        </div>
+                                        <div class="flex justify-center items-center">
+                                            <p class="text-gray-800 whitespace-normal pl-16 break-words w-full">
+                                                {{ $comment->comment }}
+                                            </p>
+                                        </div>
+                                    </div>
                                 </li>
                             @endforeach
                         </ul>

@@ -24,4 +24,5 @@ Route::middleware(['auth'])->group(function () {
         $user = Auth::user();
         return view('user.perfil', compact('user'));
     })->name('user.showPerfil');
+    Route::delete('/user/{id}', [UserController::class, 'deletePerfil'])->name('user.deleteUser');
 });

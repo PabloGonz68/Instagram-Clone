@@ -16,7 +16,8 @@ class UserController extends Controller
         $validator = Validator::make($request->all(), [
             'name' => 'required',
             'email' => 'required|email:rfc,dns|unique:users,email',
-            'password' => 'required|min:5'
+            'password' => 'required|min:5',
+            'password_confirmation' => 'required|same:password'
         ]);
 
         if ($validator->fails()) {
@@ -58,5 +59,17 @@ class UserController extends Controller
     {
         Auth::logout();
         return redirect()->route('showLogin');
+    }
+
+
+    public function deletePerfil($id)
+    {
+        $user = User::findOrFail($id);
+        if ($user->id == Auth::id()) {
+            $user->delete();
+            return redirect()->route('user.login')->with('success', 'Cuenta eliminada correctamente.');
+        }
+        return redirect()->route('home')->with('error', 'No tienes permisos para eliminar una cuenta ajena.');
+
     }
 }

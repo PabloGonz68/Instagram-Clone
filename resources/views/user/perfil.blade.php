@@ -25,6 +25,15 @@
             <p><strong>Email:</strong> {{ $user->email }}</p>
             <p><strong>Fecha de registro:</strong> {{ $user->created_at->format('d M, Y') }}</p>
         </div>
+        @if ($user->id == auth()->id())
+            <form action="{{ route('user.deleteUser', $user->id) }}" method="POST"
+                onsubmit="return confirm('¿Seguro que deseas eliminar este usuario?');">
+                @csrf
+                @method('DELETE')
+                <button type="submit" class="text-red-500 hover:underline">Eliminar</button>
+            </form>
+        @endif
+
     </main>
 </body>
 
