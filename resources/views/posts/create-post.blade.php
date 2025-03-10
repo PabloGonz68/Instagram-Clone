@@ -22,10 +22,12 @@
             <textarea name="description" placeholder="Descripción" required rows="4"
                 class="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
 
-            <div>
-                <label for="image">Imagen</label>
-                <input type="file" name="image" id="image" required>
+            <div class="w-full text-center">
+                <label for="image" class="block text-gray-700 font-medium mb-2">Imagen</label>
+                <input type="file" name="image" id="image" required
+                    class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-100 focus:outline-none file:bg-blue-500 file:text-white file:px-4 file:py-2 file:rounded-lg file:border-none hover:file:bg-blue-600">
             </div>
+
             <button type="submit"
                 class="w-full bg-blue-500 text-white p-2 rounded-lg font-semibold hover:bg-blue-600 transition-transform hover:scale-105">
                 Publicar
